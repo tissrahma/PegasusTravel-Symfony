@@ -1,0 +1,110 @@
+
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Hello VoyageController!{% endblock %}
+
+{% block body %}
+
+
+
+    <script src="{{asset('dark.js')}}"></script>
+
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="pageTitle">Maison d'hotes</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="row box-section">
+        <tbody>
+        {% for maison in m %}
+            <div class="col-md-4">
+                <div class="box-content">
+                    <tr>
+                        <td> <h3>{{ maison.nom }}</h3></td>
+                        <td><img src="{{ asset('uploads/'~maison.imageMaison) }}" style=" width:400px; height:300px; " alt=""/></td>
+                        <td> <h4>{{ maison.localisation }}</h4></td>
+                        <td><p>{{  maison.description }}</p></td>
+                        <td> <h3>{{  maison.prix  }} D </h3></td>
+                        <td> <a class="btn btn-primary" href="{{ path('app_reservationm_new',{'id':maison.idMaison}) }}">Réserver</a></td>
+                    </tr>
+
+                </div>
+            </div>
+        {% endfor %}
+
+        </tbody>
+
+        </br>
+
+        {#    <div class="col-md-10">
+            <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script><div style="overflow:hidden;height:500px;width:600px;"><div id="gmap_canvas" style="height:500px;width:600px;"></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style><a class="google-map-code" href="http://www.trivoo.net" id="get-map-data">trivoo</a></div><script type="text/javascript">
+                function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(40.805478,-73.96522499999998),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(40.805478, -73.96522499999998)});infowindow = new google.maps.InfoWindow({content:"<b>The Breslin</b><br/>2880 Broadway<br/> New York" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+        </div>#}
+    </div>
+    <div class="container py-5">
+        <div class="d-flex justify-content-center">
+
+            {{ knp_pagination_render(m) }}
+        </div>
+    </div>
+
+    <section id="content-3-10" class="content-block data-section nopad content-3-10">
+        <div class="image-container col-sm-6 col-xs-12 pull-left">
+            <div class="background-image-holder">
+
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-6 col-xs-12 content">
+                    <div class="editContent">
+                        <h3>Why We’re Different</h3>
+                    </div>
+                    <div class="editContent">
+                        <p>Pegasus Travel, votre Agence de Voyage en Tunisie en Ligne vous propose des Promotions sur vos Voyages et Séjours en Tunisie et dans le Monde avec les Meilleurs Prix et Services.
+
+                        </p>
+                        <p>Une chambre d'hôtes est une chambre meublée chez l'habitant qui reçoit des touristes pour une ou plusieurs nuitées contre rétribution. On parle également de maison d'hôtes lorsqu'il y a plusieurs chambres d'hôtes, mais seul le terme "chambre d'hôtes" est défini par la loi.
+                        </p>
+                    </div>
+                    <a href="#" class="btn btn-outline btn-outline outline-dark">Our Portfolio</a>
+                </div>
+            </div><!-- /.row-->
+        </div><!-- /.container -->
+        <script>
+            new Darkmode({
+                bottom: '60px',
+                right: '32px',
+                time: '0.5s',
+                label: '🌙'
+            }).showWidget();
+        </script>
+    </section>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6381.124145949898!2d10.18147762628329!3d36.90082341971166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2cb763f2120bb%3A0xc3e79593db50c2e8!2sLa%20petite%20Ariana%2C%20Cebalat%20Ben%20Ammar!5e0!3m2!1sfr!2stn!4v1650322845664!5m2!1sfr!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script src="//code.tidio.co/cegiivvbwpmow2xlsfudawtm1reuslft.js" async></script>
+
+
+
+{% endblock %}

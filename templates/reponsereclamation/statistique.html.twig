@@ -1,0 +1,43 @@
+{% extends 'baseBack.html.twig' %}
+
+
+{% block content %}
+
+
+    {% block body %}
+        <h1 style="margin-top: 20px ;margin-left: 40px ;text-align: center">Statstique de Reclamation par TypeReclamation</h1>
+        <canvas id="monGraph" width="400" height="100" style="max-width: 1000px;max-height:600px;margin-left: 30%;"  ></canvas>
+        </div>
+        <a  type="submit" class="btn btn-primary " href="{{ path('app_reponsereclamation_index') }}">back to list</a>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js" integrity="sha256-lISRn4x2bHaafBiAb0H5C7mqJli7N0SH+vrapxjIz3k=" crossorigin="anonymous"></script>
+        <script>
+            let ctx = document.querySelector("#monGraph")
+            let graph = new Chart(ctx, {
+                type: "pie",
+                data: {
+                    labels: ['Voyage','Evenement','hotel'],
+                    datasets: [{
+                        label: 'Nombre d typereclamation selon type ',
+                        data: {{ nbr|raw }},
+                        backgroundColor: ['#f3edc5', '#243f39', '#f2b15a', 'green', 'purple', 'orange']
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Répartiton entreprise par pays'
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            })
+
+        </script>
+
+
+
+    {% endblock %}
+
+{% endblock %}

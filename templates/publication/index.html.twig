@@ -1,0 +1,48 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Espace Publication{% endblock %}
+
+{% block body %}
+    <h1> Espaces Publication </h1>
+
+
+
+        <tbody>
+        <div class="row" style="margin-left: 20px">
+            {% for publication in publications %}
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card" style="margin-bottom: 20px">
+
+
+                        <td> <img class="img-rounded" src="{{ asset('uploads/' ~ publication.path) }}" alt="" width="300" height="200" style="margin: 20px"></td>
+
+                        <div class="card-body" style="margin-left: 80px">
+                            <th>  <p> <td > Date :{{ publication.datepub ? publication.datepub|date('Y-m-d') : '' }}</td></p></th>
+                            <p>
+                            <h5 style="font-size: large" class="card-title">Description :{{ publication.description |raw}}</h5>
+                            </p>
+
+                        </div>
+
+                            <a type="submit" class="btn btn-primary " style="margin: 15px" href="{{ path('app_publication_show', {'idpub': publication.idpub}) }}">show</a>
+                            <a type="submit" class="btn btn-primary " style="margin: 15px" href="{{ path('app_publication_edit', {'idpub': publication.idpub}) }}">edit</a>
+
+                        <div class="card-footer" >
+                            <div class="row " style="margin: 10px"  >
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+        </tbody>
+
+
+    <a type="submit" class="btn btn-primary "  href="{{ path('app_publication_new') }}">Create new</a>
+
+{% endblock %}

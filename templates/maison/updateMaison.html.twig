@@ -1,0 +1,80 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block body %}
+
+    <!--   <style>
+        body {
+            background-image: url('back.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>-->
+    <div class="row">
+        <div  style="display: flex;align-items: center;justify-content: center;margin-top: 150px; padding: 10px;">
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Modifier une maison d'hote :</h5>
+
+                    <!-- General Form Elements -->
+                    {{ form_start(f) }}
+                    <label for="inputText" class="col-sm-4 col-form-label">Nom</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(f.nom,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    {{ form_errors(f.nom,{'attr':{'class':'text-danger'}}) }}
+
+
+
+                    <label for="inputText" class="col-sm-4 col-form-label">localisation</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(f.localisation,{'attr':{'class':'form-control'}}) }}
+
+                    </div>
+                    {{ form_errors(f.localisation,{'attr':{'class':'text-danger'}}) }}
+
+                    <label for="inputText" class="col-sm-4 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(f.description,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    {{ form_errors(f.description,{'attr':{'class':'text-danger'}}) }}
+
+
+                    <label for="inputText" class="col-sm-4 col-form-label">prix </label>
+                    <div class="col-sm-10">
+                        {{ form_widget(f.prix,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    {{ form_errors(f.prix,{'attr':{'class':'text-danger'}}) }}
+
+
+                    <label for="inputText" class="col-sm-4 col-form-label">image maison </label>
+                    <div class="col-sm-10">
+                        {{ form_widget(f.imageMaison , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'Nom du fichier'}} ) }}
+                        {{ form_errors(f.imageMaison) }}
+                    </div>
+
+
+                    <br/>
+                    <div class="col-sm-10" style="display: flex;align-items: center;justify-content: center">
+
+                        {{ form_widget(f.ajouter,{ 'label': 'modifier' },{'attr':{'class':'btn btn-primary'}}) }}
+                    </div>
+
+                    {{ form_end(f) }}
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+
+{% extends 'baseBack.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div  style="display: flex;align-items: center;justify-content: center;margin-top: 150px; padding: 10px;">
+            <div class="col-lg-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Modifier un voyage</h5>
+
+                    <!-- General Form Elements -->
+                    {{ form_start(f) }}
+                    <label for="inputText" class="col-sm-8 col-form-label">Nom</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(f.nom,{'attr':{'class':'form-control'}}) }}
+                    </div>
+
+
+                    <label for="inputText" class="col-sm-8 col-form-label">Destination</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(f.destination,{'attr':{'class':'form-control'}}) }}
+
+                    </div>
+                    <label for="inputText" class="col-sm-8 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(f.description,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <label for="inputText" class="col-sm-8 col-form-label">Prix du Voyage</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(f.prix,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    <label for="inputText" class="col-sm-8 col-form-label">Image</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(f.image , {'attr': {'class': 'form-control form-control-user' , 'placeholder' : 'Nom du fichier'}} ) }}
+                        {{ form_errors(f.image) }}
+                    </div>
+                    <br/>
+                    <div class="col-sm-10" style="display: flex;align-items: center;justify-content: center">
+
+                        {{ form_widget(f.ajouter,{ 'label': 'Modifier' },{'attr':{'class':'btn btn-primary'}}) }}
+                    </div>
+
+                    {{ form_end(f) }}
+
+                </div>
+            </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

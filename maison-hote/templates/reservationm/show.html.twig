@@ -1,0 +1,38 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Reservationm{% endblock %}
+
+{% block body %}
+    <h1>Reservation maison : </h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdRes</th>
+                <td>{{ reservationm.idRes }}</td>
+            </tr>
+            <tr>
+                <th>NbChambre</th>
+                <td>{{ reservationm.nbChambre }}</td>
+            </tr>
+            <tr>
+                <th>NbPersonne</th>
+                <td>{{ reservationm.nbPersonne }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ reservationm.date }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ path('imprimreservationm') }}">Imprimer votre réservation</a>
+
+
+    <a href="{{ path('app_reservationm_index') }}">retour</a>
+
+    <a href="{{ path('app_reservationm_edit', {'idRes': reservationm.idRes}) }}">modifier </a>
+
+
+
+    {{ include('reservationm/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Hello VoyageController!{% endblock %}
+
+{% block body %}
+                <img src="{{ asset('A.gif')  }}" class="img-fluid",class="center">
+
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+
+
+    <style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="pageTitle">Nos Offres De Voyges</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    <div class="row box-section">
+        <tbody>
+        {% for voyage in v %}
+        <div class="col-md-4">
+            <div class="box-content">
+                <tr>
+                    <td> <h3>{{ voyage.nom }}</h3></td>
+                    <td><img src="{{ asset('uploads/'~voyage.image) }}" style=" width:400px; height:300px; " alt=""/></td>
+                    <td> <h4>{{ voyage.destination }}</h4></td>
+                    <td><p>{{  voyage.description }}</p></td>
+                    <td> <h3>{{  voyage.prix  }} D </h3></td>
+                    <td> <a class="btn btn-primary" href="{{ path('app_reservationv_new',{'id':voyage.id}) }}">Réserver</a></td>
+                </tr>
+
+            </div>
+        </div>
+        {% endfor %}
+        </tbody>
+        </br>
+
+    </div>
+    <div class="container py-5">
+        <div class="d-flex justify-content-center">
+
+            {{ knp_pagination_render(v) }}
+        </div>
+    </div>
+
+    <section id="content-3-10" class="content-block data-section nopad content-3-10">
+        <div class="image-container col-sm-6 col-xs-12 pull-left">
+            <div class="background-image-holder">
+
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-6 col-xs-12 content">
+                    <div class="editContent">
+                        <h3>Why We’re Different</h3>
+                    </div>
+                    <div class="editContent">
+                        <p>Les voyages en avion sur un vol d'un avion commercial est l'une des formes les plus courantes de voyage à longue distance et qui est, pour beaucoup, au cœur de leur expérience de Voyage. Dans cet esprit, Wikivoyage dispose d'informations et de conseils pour le passager de l'air en herbe afin de lui rendre l'expérience d'être assis dans un tube de métal à 35 000 pieds dans les airs pendant des heures la moins stressante et la plus agréable possible.</p>
+                    </div>
+
+                </div>
+            </div><!-- /.row-->
+        </div><!-- /.container -->
+
+
+
+
+    </section>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6381.124145949898!2d10.18147762628329!3d36.90082341971166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2cb763f2120bb%3A0xc3e79593db50c2e8!2sLa%20petite%20Ariana%2C%20Cebalat%20Ben%20Ammar!5e0!3m2!1sfr!2stn!4v1650322845664!5m2!1sfr!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+<script>
+function intMap()
+    {
+    var myLating = { lat: 48.862725 , ing: 2.287592};
+    var map = new google.maps.Map(document.getElementById('map') , {
+    zoom: 6,
+    centre: myLating,
+    });
+    var marker = new google.maps.Map ({
+        position: myLating,
+        map: map,
+        title: 'paris'
+    })
+    }
+</script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script src="//code.tidio.co/cegiivvbwpmow2xlsfudawtm1reuslft.js" async></script>
+
+
+
+
+    <!-- Flashy depends on jQuery -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <!-- Include Flashy default partial -->
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+
+{% endblock %}

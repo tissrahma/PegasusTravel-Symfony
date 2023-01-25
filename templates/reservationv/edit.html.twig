@@ -1,0 +1,13 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Edit Reservationv{% endblock %}
+
+{% block body %}
+    <h1>Modifier votre réservation de voyage</h1>
+
+    {{ include('reservationv/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('app_reservationv_index') }}">back to list</a>
+
+    {{ include('reservationv/_delete_form.html.twig') }}
+{% endblock %}

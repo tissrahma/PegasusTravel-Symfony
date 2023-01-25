@@ -1,0 +1,29 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Reponse{% endblock %}
+
+{% block body %}
+    <h1>Reponsereclamation</h1>
+
+    <table class="table" border="2" >
+        <tbody>
+        <tr>
+            <th>Idrep</th>
+            <td>{{ reponsereclamation.idrep }}</td>
+        </tr>
+        <tr>
+            <th>Reponse</th>
+            <td>{{ reponsereclamation.reponse }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a type="submit" class="btn btn-primary " href="{{ path('app_reponsereclamation_index') }}">back to list</a>
+
+
+   <div><a type="submit" class="btn btn-primary " href="{{ path('app_reponsereclamation_edit', {'idrep': reponsereclamation.idrep}) }}">edit</a></div>
+
+    {{ include('reponsereclamation/_delete_form.html.twig') }}
+
+{% endblock %}
+

@@ -1,0 +1,208 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %} PegasusTravel {% endblock %}
+ {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="front-office/http://webthemez.com" />
+    <!-- css -->
+    <link href="{{ asset('front-office/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('front-office/css/fancybox/jquery.fancybox.css') }}" rel="stylesheet">
+    <link href="{{ asset('front-office/css/flexslider.css') }}" rel="stylesheet" />
+    <link href="{{ asset('front-office/css/style.css') }}" rel="stylesheet" />
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="{{asset('front-office/http://html5shim.googlecode.com/svn/trunk/html5.js')}}"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+
+
+
+                <li>
+                    <img src="/img/slides/2.jpg" alt="" />
+                    <div class="flex-caption">
+                        <!--  <h3>Enjoy the Journey</h3>
+                          <p>Stop worrying and enjoy the trip</p> -->
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- end slider -->
+
+    </section>
+
+
+    <section id="content" >
+        {% for message in app.flashes('success') %}
+        <div class="alert alert-success " style="align-content: center">
+            {{ message }}
+        </div>
+        {% endfor %}
+        <div class="col-md-12" >
+            <div class="aligncenter"><h2 class="aligncenter">Les Reclamations</h2></div>
+            <br/>
+        </div>
+
+
+        <div style=" display: flex;align-content: center ; justify-content: center ; margin-top: 100px ; padding: 20px">
+            <div class="row box-section">
+                <div class="col-md-5">
+                    <div class="container">
+                        <div class="row" id="t">
+                                <tbody id="all">
+                            {% for reclamation in reclamations %}
+                                <div class="col-md-4" >
+                                    <div class="box-content" style="margin:20px">
+                                        <a href="details.html">
+
+
+                                             <h3 style="color: #0b0b0b">  Nom : <span type="" class="d-print-table-cell" style="color: #0b0b0b">{{ reclamation.nom }}</span></h3>
+                                            <h3 style="color: #0b0b0b"> Prenom:  <span class="d-print-table-cell" style="color: #0b0b0b">{{ reclamation.prenom }}</span></h3>
+
+                                            <h3 style="color: #0b0b0b">Email: <span class="d-print-table-cell" style="color: #0b0b0b">{{ reclamation.email }}</span> </h3>
+                                            <h3 style="color: #0b0b0b"> Commentaire: <span class="d-print-table-cell"style="color: #0b0b0b">{{ reclamation.commentaire|raw }}</span></h3>
+                                            <h3 style="color: #0b0b0b"> TypeReclamation:<span class="d-print-table-cell"style="color: #0b0b0b">{{ reclamation.typereclamation }}</span></h3>
+                                            <strong style="color: #0b0b0b" > Date:{{ reclamation.datereclamation ? reclamation.datereclamation|date('Y-m-d') : '' }}</strong>
+                                        </a>
+                                        <div   style="margin-bottom: 30px ; align-content: center"><a   type="submit" class="btn btn-primary " style="background-color: white ;margin-bottom: 15px;width: 250px;" href="{{ path('app_reclamation_show', {'numero': reclamation.numero}) }}"  >show</a>
+                                         <a type="submit" class="btn btn-primary " style="background-color: white;width: 250px;"href="{{ path('app_reclamation_edit', {'numero': reclamation.numero}) }}">edit</a></div>
+                                    </div>
+
+
+                                </div>
+                            {% else %}
+                                <tr>
+                                    <td colspan="8">no records found</td>
+                                </tr>
+                            {% endfor %}
+                             </tbody>
+
+
+        <tbody id="search">
+
+        </tbody>
+
+
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <a type="submit" class="btn btn-primary "style="background-color: white"   href="{{ path('app_reclamation_index') }} ">back to list</a>
+                    <a type="submit" class="btn btn-primary " style="background-color: white" href="{{ path('app_reclamation_new') }}">Create new</a>
+
+
+                </div>
+
+                </div>
+
+
+
+                </div>
+
+                        </div>
+
+
+    <form action="{{ path("filter") }}" method="get">
+        <label>  <input value="" id="typereclamation" name="typereclamation"  class="form-control " placeholder="Votre Type de reclaamtions ... " style="width: 300px"> </label>
+        <button class="btn btn-primary" > OK </button>
+    </form>
+     <div>
+     <form class="align-content-center" action="{{ path("search_event") }}" method="get" style="align-items: center">
+            <label>  <input type="text" id="search" class="form-control" placeholder="Search">
+
+            </form>
+
+
+</div>
+                    </section>
+                </div>
+                </div>
+
+
+
+</body>
+
+
+
+
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="copyright">
+                        <p>
+                            <!--  <span>&copy; Bootstrap Template 2018 All right reserved. Template By </span><a href="http://webthemez.com/free-bootstrap-templates/" target="_blank">WebThemez</a> -->
+                        </p>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+</html>
+      <a style="margin: 140px "class="d-print-table-cell"> {{ knp_pagination_render(reclamations) }}</a>
+
+
+                {% endblock %}
+
+            {% block js %}
+<script
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+</script>
+<script>
+    $( document ).ready(function() {
+        $("#show").keyup(function(e) {
+            var value = $(this).val();
+            $.ajax({
+                url : "{{ path('search_back1') }}",
+                method: "GET",
+                data: {
+                    searchValue: value,
+                },
+                success : function(data){
+                    $('#t tbody#search').empty();
+                    if(data){
+                        $('#t tbody#all').hide();
+                        for (i = 0; i < data.length; i++) {
+
+                            $('#t tbody#search').append('' +
+                                '<tr><td> '+data[i].numero+' </td>' +
+                                '<tr><td> '+data[i].nom+' </td>' +
+                                '<td>'+data[i].prenom+' </td>' +
+                                '<td>'+data[i].email+' </td>' +
+                                '<td>'+data[i].commentaire+' </td>' +
+                                '<td>'+data[i].datereclamation+' </td>' +
+                                '<td>'+data[i].typereclamation+' </td>  </tr>');
+                        };
+                    }
+                    else
+                    {
+
+                        $('#t tbody#all').show();
+                        $('#t tbody#search').empty();
+                        $('#t tbody#search').fadeIn('fast');
+                    }
+                },
+            });
+            return false;
+    </section>
+
+
+            {% endblock %}

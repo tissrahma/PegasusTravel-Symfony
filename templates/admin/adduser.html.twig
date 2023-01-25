@@ -1,0 +1,10 @@
+{% extends 'back.html.twig' %}
+
+{% block body %}
+    {% form_theme format 'bootstrap_4_layout.html.twig' %}
+
+    {{ form_start(format) }}
+    {{ form_errors(format) }}
+    {{ form_end(format) }}
+
+{% endblock %}

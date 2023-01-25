@@ -1,0 +1,38 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Reservation voyage{% endblock %}
+
+{% block body %}
+    <h1>Reservation voyage</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Nombre de personnes</th>
+                <th>Date du voyage</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservationv in reservationvs %}
+            <tr>
+              <!--  <td>{{ reservationv.idr }}</td>-->
+                <td></td>
+                <td>{{ reservationv.nbPersonnes }}</td>
+                <td>{{ reservationv.date }}</td>
+                <td>
+                    <a href="{{ path('app_reservationv_show', {'idr': reservationv.idr}) }}">Afficher</a>
+                    <a href="{{ path('app_reservationv_edit', {'idr': reservationv.idr}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucune réservation </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_reservationv') }}">Réserver</a>
+{% endblock %}

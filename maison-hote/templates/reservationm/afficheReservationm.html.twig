@@ -1,0 +1,52 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Reservationm index
+
+
+
+
+{% endblock %}
+
+{% block body %}
+
+
+
+    <h1>Listes des réservations : </h1>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>IdRes</th>
+            <th>NbChambre</th>
+            <th>NbPersonne</th>
+            <th>Date</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody id="myTable">
+        {% for reservationm in reservationms %}
+            <tr>
+                <td>{{ reservationm.idRes }}</td>
+                <td>{{ reservationm.nbChambre }}</td>
+                <td>{{ reservationm.nbPersonne }}</td>
+                <td>{{ reservationm.date }}</td>
+
+                <td>
+                    <a class="btn btn-danger" href="{{ path('app_reservationm_deletee',{'idRes':reservationm.idRes}) }}">supprimer</a>
+
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <div id="google_translate_element"></div>
+
+
+
+{% endblock %}

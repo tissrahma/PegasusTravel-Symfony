@@ -1,0 +1,13 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Edit Reservationm{% endblock %}
+
+{% block body %}
+    <h1>modifier réservation :</h1>
+
+    {{ include('reservationm/_form.html.twig', {'button_label': 'modifier'}) }}
+
+    <a href="{{ path('app_reservationm_index') }}">back to list</a>
+
+    {{ include('reservationm/_delete_form.html.twig') }}
+{% endblock %}

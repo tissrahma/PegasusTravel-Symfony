@@ -1,0 +1,54 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}New Publication{% endblock %}
+
+{% block body %}
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div style="display: flex;align-content: center ;justify-content: center ;margin-top: 100px;padding: 20px ">
+
+
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <h5 class="card-header">Modifier reponse Recalamation</h5>
+                    {{ form_start(form) }}
+                    <div class="card-body">
+
+                        <div>
+                            <label for="defaultFormControlInput" class="form-label col-sm-4">reponse</label>
+                            {{ form_widget(form.reponse,{'attr':{'class':'form-control'}})}}
+
+                        </div>
+                        <div>
+                            <label for="defaultFormControlInput" class="form-label col-sm-4">numero</label>
+                            {{ form_widget(form.numero,{'attr':{'class':'form-control'}})}}
+
+                        </div>
+
+
+                            <div class="col-sm-10">
+
+                                <button type="submit" class="btn btn-primary " type="submit"class="btn">{{ button_label|default('Update') }}</button>
+                                <a type="submit" class="btn btn-primary " href="{{ path('app_reponsereclamation_index') }}">back to list</a>
+                            </div>
+
+
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    {{ include('reponsereclamation/_delete_form.html.twig') }}
+{% endblock %}

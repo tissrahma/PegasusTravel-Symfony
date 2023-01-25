@@ -1,0 +1,194 @@
+{% extends 'baseBack.html.twig' %}
+
+
+
+{% block body %}
+    <h1 style="margin: 15px">Reclamation Back </h1>
+            <input type="text" id="show" placeholder="recherche par Nom 🔍">
+    <a style="margin-left: 150px" class="tg-btn" href="" id="idup">DateReclamation (UP) ⬆️</a>
+    <a class="tg-btn" href="" id="iddown">DateReclamation (DOWN) ⬇️</a>
+    <table id="t" class="table">
+        <thead>
+        <tr>
+
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Commentaire</th>
+            <th>Datereclamation</th>
+            <th>Typereclamation</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody id="all">
+        {% for reclamation in reclamations %}
+            <tr>
+
+                <td>{{ reclamation.nom }}</td>
+                <td>{{ reclamation.prenom }}</td>
+                <td>{{ reclamation.email }}</td>
+                <td>{{ reclamation.commentaire |raw}}</td>
+                <td>{{ reclamation.datereclamation ? reclamation.datereclamation|date('Y-m-d') : '' }}</td>
+                <td>{{ reclamation.typereclamation }}</td>
+                <td>
+                    <a href="{{ path('app_reclamation_back_show', {'numero': reclamation.numero}) }}"class="btn btn-primary " >show</a>
+                </td>
+            </tr>
+
+
+            </td>
+            </tr>
+
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+
+
+        <tbody id="search">
+
+        </tbody>
+
+    </table>
+
+
+
+    <div class="text-center">
+        <a type="submit" class="btn btn-primary btn-sm " style="margin-bottom: 20px"  href="{{ path('impr' )}}">  <strong>enregistrer sous forme pdf</strong></a>
+    </div>
+
+    <div class="text-center">
+
+
+        </form>
+    </div></div>
+    <a  type="submit" class="btn btn-primary " href="{{ path('app_reclamation_back_index') }}"  style="margin-bottom: 20px" class="btn btn-primary btn-sm " >back to list</a>
+    <form action="{{ path("filte") }}" method="get">
+        <label>  <input value="" id="datereclamation" name="datereclamation"  class="form-control " placeholder="Votre Date de reclaamtion ... " style="width: 300px"> </label>
+        <button class="btn btn-primary" > OK </button>
+    </form>
+
+    <nav aria-label="Page navigation example"  style="align-content: center">
+        <ul class="pagination justify-content-center">
+            {{ knp_pagination_render(reclamations) }}
+        </ul>
+    </nav>
+    </div>
+
+    <script
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    </script>
+    <script>
+        $( document ).ready(function() {
+            $("#show").keyup(function(e) {
+                var value = $(this).val();
+                $.ajax({
+                    url : "{{ path('search_back1') }}",
+                    method: "GET",
+                    data: {
+                        searchValue: value,
+                    },
+                    success : function(data){
+                        $('#t tbody#search').empty();
+                        if(data){
+                            $('#t tbody#all').hide();
+                            for (i = 0; i < data.length; i++) {
+
+                                $('#t tbody#search').append('' +
+
+                                    '<tr><td> '+data[i].nom+' </td>' +
+                                    '<td>'+data[i].prenom+' </td>' +
+                                    '<td>'+data[i].email+' </td>' +
+                                    '<td>'+data[i].commentaire+' </td>' +
+                                    '<td>'+data[i].datereclamation+' </td>' +
+                                    '<td>'+data[i].typereclamation+' </td>' +
+                                    '<td>' + '<a class="btn btn-dark" href="App_reclamation_back_show/'+data[i].numero+'">show </a>' +
+                                    '</tr>');
+                            };
+                        }
+                        else
+                        {
+
+                            $('#t tbody#all').show();
+                            $('#t tbody#search').empty();
+                            $('#t tbody#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+        $("#idup").click(function(e) {
+            var value3 ="ASC";
+            $.ajax({
+                url :  "{{ path('UPtriEQUIPE') }}",
+                type : 'GET',
+                data: {
+
+                    'order': value3
+                },
+                success : function(data){
+                    $('#t tbody#search').empty();
+
+                    for (i = 0; i < data.length; i++) {
+
+                        $('#t tbody#all').hide();
+                        $('#t tbody#search').append('' +
+
+                            '<tr><td> '+data[i].nom+' </td>' +
+                            '<td>'+data[i].prenom+' </td>' +
+                            '<td>'+data[i].email+' </td>' +
+                            '<td>'+data[i].commentaire+' </td>' +
+                            '<td>'+data[i].datereclamation+' </td>' +
+
+                            '<td>'+data[i].typereclamation+' </td> ' +
+                            '<td>' + '<a class="btn btn-dark" href="App_reclamation_back_show/'+data[i].numero+'">show </a>' +
+                            ' </tr>');
+                    }
+                },
+
+
+
+            });
+            return false;});
+        $("#iddown").click(function(e) {
+            var value3 ="DESC";
+            $.ajax({
+                url :  "{{ path('DOWNtriEQUIPE') }}",
+                type : 'GET',
+                data: {
+
+                    'order': value3
+                },
+                success : function(data){
+                    $('#t tbody#search').empty();
+
+                    for (i = 0; i < data.length; i++) {
+
+                        $('#t tbody#all').hide();
+                        $('#t tbody#search').append('' +
+
+                            '<tr><td> '+data[i].nom+' </td>' +
+                            '<td>'+data[i].prenom+' </td>' +
+                            '<td>'+data[i].email+' </td>' +
+                            '<td>'+data[i].commentaire+' </td>' +
+                            '<td>'+data[i].datereclamation+' </td>' +
+                            '<td>'+data[i].typereclamation+' </td> ' +
+                            '<td>' + '<a class="btn btn-dark" href="App_reclamation_back_show/'+data[i].numero+'">show </a>' +
+                            ' </tr>');
+                    }
+                },
+
+
+
+            });
+            return false;});
+    </script>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Reponsereclamation index{% endblock %}
+
+{% block body %}
+    <h1>Reponsereclamation index</h1>
+    <div>
+        <p style="100px" > <input  id="myInput"  type="text" placeholder="search">
+            <img src="https://img.icons8.com/nolan/344/google-web-search.png" style="width:50px;height:50px;"/></a>
+
+    </div>
+    <table class="table" border="2">
+        <thead>
+            <tr>
+                <th>Idrep</th>
+                <th>Reponse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tbody id="myTable">
+
+
+        {% for reponsereclamation in reponsereclamations %}
+            <tr>
+                <td>{{ reponsereclamation.idrep }}</td>
+                <td>{{ reponsereclamation.reponse }}</td>
+                <td>
+                    <a type="submit" class="btn btn-primary "  href="{{ path('app_reponsereclamation_show', {'idrep': reponsereclamation.idrep}) }}">show</a>
+
+                    <a type="submit" class="btn btn-primary " href="{{ path('app_reponsereclamation_edit', {'idrep': reponsereclamation.idrep}) }}">edit</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tbody id="search">
+        </tbody>
+    </table>
+
+    <a type="submit" class="btn btn-primary " style="margin-bottom: 20px" href="{{ path('app_reponsereclamation_new') }}">Create new</a>
+    <form  style="margin-bottom: 20px",   method="post" action="{{ path('statistiquesRec') }}">
+        <input class="btn btn-primary" type="submit" value="Statistiques">
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,88 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Hello VoyageController!{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+
+
+    <div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 150px;">
+
+
+        <div class="col-lg-10">
+
+            <div class="card">
+
+                <form method="POST">
+                    <input type="text" name="prix" >
+                    <input class="btn btn-dark" type="submit" value="Search" placeholder="chercher">
+
+                </form>
+
+
+                <div class="card-body">
+                    <a href="{{ path('addVoyage') }}"><i class="font-icon-arrow-light-round-left-circle" style="font-size: 50px;"></i></a>
+                    <h5 class="card-title">Liste des voyages</h5>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>     <th>Nom voyage</th>
+                            <th>Destination</th>
+                            <th>Description</th>
+                            <th>Prix</th>
+                            <th>Image</th>
+                            <th>Modification</th>
+                            <th>Suppression</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for voyage in v %}
+                            <tr>
+                                <td>{{ voyage.nom }}</td>
+                                <td>{{ voyage.destination }}</td>
+                                <td>{{  voyage.description }}</td>
+                                <td>{{  voyage.prix }}</td>
+                                <td><img src="{{ asset('uploads/'~voyage.image) }}" style=" width:100px; height:100px; " alt=""/></td>
+                                <td>
+                                    <a class="btn btn-success" href="{{ path('modifVoyage',{'id':voyage.id}) }}">Modifier</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger" href="{{ path('supp_voyage',{'id':voyage.id}) }}">Supprimer</a>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <a class="btn btn-primary" href="{{ path('addVoyage') }}">Ajouter un voyage </a>
+                    <a class="btn btn-primary" href="{{ path('statvoyage') }}">Voir statistiques</a>
+                  <!--  <a class="btn btn-primary" href="{{ path('imprimvoyage') }}">Imprimer liste voyages</a>-->
+                    <a class="btn btn-primary" href="{{ path('trivoyagePrix') }}">Trier par prix</a>
+                    <a class="btn btn-primary" href="{{ path('trivoyageNom') }}">Trier par nom</a>
+
+                    <!-- End small tables -->
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <!-- Include Flashy default partial -->
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+
+
+
+{% endblock %}

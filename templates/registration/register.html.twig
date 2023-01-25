@@ -1,0 +1,49 @@
+{% extends 'baseFrontR.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="images/bubble-gum-workflow.gif" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <h3>Register</h3>
+                                <p class="mb-4"></p>
+                            </div>
+                            <div class="col-12">
+                                <p class="small mb-0">Already have an account? <a href="{{ path('app_login') }}">Log in</a></p>
+                            </div>
+
+                            {% form_theme registrationForm 'bootstrap_4_layout.html.twig' %}
+
+                            {{ form_start(registrationForm) }}
+
+
+                            {{ form_end(registrationForm) }}
+<br/>
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

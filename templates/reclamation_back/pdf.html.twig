@@ -1,0 +1,123 @@
+
+{% block body %}
+
+    <h1 align="center" style="color:green;">PegasusTravel</h1>
+
+    <hr>
+    <div class="content" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1">
+                    <div class="card-deck">
+                        <div class="card-header card-header-primary">
+                            <h1 align="center" style="color:blue;">Les reclamations</h1>
+
+                        </div>
+                        <!DOCTYPE html>
+                        <html>
+                        <head>
+                            <style>
+                                #customers {
+                                    font-family: Arial, Helvetica, sans-serif;
+                                    border-collapse: collapse;
+                                    width: 100%;
+                                }
+
+                                #customers td, #customers th {
+                                    border: 1px solid #ddd;
+                                    padding: 8px;
+                                }
+
+                                #customers tr:nth-child(even) {
+                                    background-color: #f2f2f2;
+                                }
+
+                                #customers tr:hover {
+                                    background-color: #ddd;
+                                }
+
+                                #customers th {
+                                    padding-top: 12px;
+                                    padding-bottom: 12px;
+                                    text-align: left;
+                                    background-color: royalblue;
+                                    color: white;
+                                }
+                            </style>
+                        </head>
+                        </html>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="" id="customers" border="2px">
+        <thead>
+
+        <tr>
+
+
+            <th style="text-align: center":> nom </th>
+            <th style="text-align: center">prenom</th>
+            <th style="text-align: center">email</th>
+            <th style="text-align: center">commantaire</th>
+            <th style="text-align: center":>date</th>
+            <th style="text-align: center":>typeReclamation</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for e in reclamations%}
+            <tr>
+
+
+                <td style="text-align: center": >{{ e.nom }}</td>
+                <td style="text-align: center":>{{ e.prenom }}</td>
+                <td style="text-align: center":>{{ e.email }}</td>
+                <td style="text-align: center":>{{ e.commentaire |raw }}</td>
+                <td  style="text-align: center":>{{ e.datereclamation ? e.datereclamation|date('Y-m-d') : '' }}</td>
+
+                <td style="text-align: center":>{{ e.typereclamation }}</td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="col-md-3 col-sm-3">
+
+        <div class="widget">
+            <h5 class="widgetheading">Nos Contacts</h5>
+            <address>
+                Adresse: Angle rue des Entrepreneurs et rue du Métal Immeuble AMIRA,
+                6ème étage LAC II - 2035 TUNIS.</address>
+            <p>
+                <i class="icon-phone"></i>Tél:+(216) 70 103 103 <br>
+                Fax:+(216) 71 942 682
+                <i class="icon-envelope-alt"></i> PegasusTravel@gmail.com
+                <br>
+                Company Registered in Country Name. Company Reg. 12121212.
+                <br>
+                VAT Registration No. 021021021 | ATOL No. 1234
+            </p>
+        </div>
+    </div>
+
+
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

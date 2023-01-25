@@ -1,0 +1,33 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Publication{% endblock %}
+
+{% block body %}
+
+    <h1>Publication</h1>
+
+    <table class="table" border="2"style="margin:auto">
+        <tbody>
+
+            <tr>
+                <th>Datepub</th>
+                <td>{{ publication.datepub ? publication.datepub|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img class= "img-rounded" src=" {{ asset('uploads/'~publication.path) }}"></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ publication.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a type="submit" class="btn btn-primary " style="margin: 15px"  href="{{ path('app_publication_index') }}">back to list</a>
+
+    <a type="submit" class="btn btn-primary " style="margin: 15px"  href="{{ path('app_publication_edit', {'idpub': publication.idpub}) }}">edit</a>
+
+   {{ include('publication/_delete_form.html.twig') }}
+
+{% endblock %}

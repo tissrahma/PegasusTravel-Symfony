@@ -1,0 +1,49 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Hello VoyageController!{% endblock %}
+
+{% block body %}
+    <div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 150px;">
+
+        <div class="col-lg-10">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <h5 class="card-title">Liste des reservations de voyages</h5>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>     <th>Nombre de Personnes</th>
+                            <th>Date de voyage</th>
+                            <th>Voyage id</th>
+                            <th>Suppression</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for reservationv in reservationvs %}
+                            <tr>
+                                <td>{{ reservationv.nbPersonnes }}</td>
+                                <td>{{ reservationv.date }}</td>
+                                <td>{{  reservationv.id }}</td>
+                                <td>
+                                    <a class="btn btn-danger" href="{{ path('app_reservationv_deletee',{'idr':reservationv.idr}) }}">Supprimer</a>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+<h1 align ="center">Liste des maisons d'hotes</h1><hr>
+
+
+<table class="table table-striped table-bordered" >
+    <thead>
+    <tr>
+        <th class="wd-15p">ID Maison</th>
+        <th class="wd-15p">Nom</th>
+        <th class="wd-20p">localisation</th>
+        <th class="wd-15p">Description</th>
+        <th class="wd-15p">Prix</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr          {% for maison in m %}>
+        <td>{{ maison.idMaison }}</td>
+        <td>{{ maison.nom }}</td>
+        <td>{{ maison.localisation }}</td>
+        <td>{{ maison.description }}</td>
+        <td>{{ maison.prix }}</td>
+
+    </tr >
+    {% endfor %}
+    </tbody>
+</table>

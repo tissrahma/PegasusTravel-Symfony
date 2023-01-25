@@ -1,0 +1,27 @@
+{% extends 'baseFrontL.html.twig' %}
+
+{% block title %}Reset Password{% endblock %}
+
+{% block body %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-outline card-info">
+                    <div class="card-header">
+                        <br>
+                        <div class="d-flex mb-5 align-items-center">
+                        <div class="card-body pad">
+                            {% form_theme sendFrom 'bootstrap_4_layout.html.twig' %}
+                            {{ form_start(sendFrom) }}
+                            {{ form_errors(sendFrom) }}
+                            <li><a href={{ path('app_login') }}>Back to Login</a></li>
+
+                            {{ form_end(sendFrom) }}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
